@@ -1,0 +1,234 @@
+/* =========================================================
+   RESPONSIVE STYLES - MineHR Solutions
+   Attaches to all pages to handle varying screen sizes.
+   ========================================================= */
+
+/* --- TABLET (max-width: 1024px) --- */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+        max-width: 100%;
+    }
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .hero-subtext {
+        font-size: 18px;
+    }
+
+    /* Adjust grid columns */
+    .features-grid,
+    .services-grid,
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .trust-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-timeline::before {
+        left: 20px;
+    }
+
+    .process-step {
+        gap: 20px;
+    }
+}
+
+/* --- MOBILE (max-width: 768px) --- */
+@media (max-width: 768px) {
+
+    /* General Typography */
+    h1,
+    .hero-title,
+    .section-title {
+        font-size: 32px !important;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 28px !important;
+    }
+
+    p,
+    .section-desc,
+    .hero-subtext {
+        font-size: 16px !important;
+    }
+
+    /* Navbar Adjustments */
+    /* .navbar-menu handled by navbar-premium.css (slide-out) */
+
+    .navbar-actions {
+        gap: 8px;
+    }
+
+    /* Force show CTA as icon-only on mobile since it's hidden by default premium styles */
+    .navbar-actions .nav-cta-btn {
+        display: flex !important;
+        padding: 8px;
+        width: 36px;
+        height: 36px;
+        justify-content: center;
+        border-radius: 50%;
+        /* Circle shape for icon only */
+    }
+
+    .nav-cta-btn span {
+        display: none;
+        /* Hide text */
+    }
+
+    .nav-cta-btn svg {
+        margin: 0;
+        /* Center svg */
+    }
+
+    /* Hero Section */
+    .trust-hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    /* Stack Grids to Single Column */
+    .features-grid,
+    .services-grid,
+    .testimonials-grid,
+    .trust-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-links-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 100%;
+        /* Ensure full width */
+        justify-items: center;
+        /* Center align items in grid */
+    }
+
+    .footer-col {
+        width: 100%;
+        text-align: center;
+        /* Center text */
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-col ul {
+        width: 100%;
+    }
+
+    .footer-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand-section {
+        margin-bottom: 40px;
+        width: 100%;
+        /* Ensure full width */
+        align-items: center;
+        /* Center align flex items */
+    }
+
+    /* Stats */
+    .stats-section .container {
+        flex-direction: column;
+    }
+
+    /* Process Timeline */
+    .process-timeline::before {
+        left: 15px;
+    }
+
+    .process-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .step-number {
+        margin-bottom: 10px;
+        /* Separated from previous rule */
+    }
+
+    .step-content {
+        width: 100%;
+        border-left: 1px solid #e2e8f0;
+        /* Reset hover border logic for mobile simplicity if needed */
+        padding-left: 0;
+        /* Remove left padding if centering */
+        border: none;
+        /* Remove border for centered mobile view or keep top border? */
+        /* Let's keep it simple and clean */
+    }
+
+    /* Trust Badges - Horizontal Scroll */
+    .trust-badges {
+        justify-content: flex-start;
+        padding-left: 20px;
+        padding-right: 20px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .badge-item {
+        flex-shrink: 0;
+    }
+
+    /* Security Section */
+    .security-wrapper {
+        flex-direction: column;
+    }
+
+    .security-text {
+        text-align: center;
+    }
+
+    .security-points li {
+        justify-content: center;
+    }
+
+    /* CTA Section */
+    .cta-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* --- SMALL MOBILE (max-width: 480px) --- */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px !important;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .trust-stat {
+        padding: 20px;
+    }
+
+    .stat-num {
+        font-size: 36px;
+    }
+}

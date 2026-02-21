@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MineHR Blogs</title>
+<link rel="stylesheet" href="css/blog.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="components/navbar-premium.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!-- ================= PREMIUM NAVBAR ================= -->
+  <header class="site-header-premium" id="navbar">
+    <div class="navbar-container">
+      <div class="navbar-inner">
+        <!-- Logo -->
+        <div class="navbar-logo">
+          <a href="index.html" class="logo-link">
+            <img src="assets/logo.png" alt="MineHR Logo" class="logo-img" />
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="navbar-menu" id="navMenu">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="services.html" class="nav-link">Services</a>
+          <a href="trust.html" class="nav-link">Trust</a>
+          <a href="career.html" class="nav-link">Career</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+        </nav>
+
+        <!-- Right Side Actions -->
+        <div class="navbar-actions">
+          <!-- Search Icon -->
+          <button class="nav-icon-btn" id="searchToggle" aria-label="Search">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+              <circle cx="9" cy="9" r="6" stroke-width="2" />
+              <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button class="nav-icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <!-- Sun Icon (Light Mode) -->
+            <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              stroke="currentColor">
+              <circle cx="10" cy="10" r="3" stroke-width="2" />
+              <line x1="10" y1="1" x2="10" y2="3" stroke-width="2" stroke-linecap="round" />
+              <line x1="10" y1="17" x2="10" y2="19" stroke-width="2" stroke-linecap="round" />
+              <line x1="1" y1="10" x2="3" y2="10" stroke-width="2" stroke-linecap="round" />
+              <line x1="17" y1="10" x2="19" y2="10" stroke-width="2" stroke-linecap="round" />
+              <line x1="3.5" y1="3.5" x2="5" y2="5" stroke-width="2" stroke-linecap="round" />
+              <line x1="15" y1="15" x2="16.5" y2="16.5" stroke-width="2" stroke-linecap="round" />
+              <line x1="16.5" y1="3.5" x2="15" y2="5" stroke-width="2" stroke-linecap="round" />
+              <line x1="5" y1="15" x2="3.5" y2="16.5" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <!-- Moon Icon (Dark Mode) -->
+            <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          </button>
+
+          <!-- Contact Us CTA -->
+          <a href="contact.html" class="nav-cta-btn">
+            <span>Contact Us</span>
+            <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-container">
+        <div class="search-box">
+          <svg class="search-box-icon" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+            <circle cx="9" cy="9" r="6" stroke-width="2" />
+            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input type="text" class="search-input" placeholder="Search services, blog posts..." id="searchInput"
+            autocomplete="off" />
+          <button class="search-close" id="searchClose" aria-label="Close search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+              <path d="M4 4L16 16M16 4L4 16" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="search-suggestions">
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+            </svg>
+            <span>HRMS Software</span>
+          </div>
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+            </svg>
+            <span>Payroll Management</span>
+          </div>
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+            </svg>
+            <span>Web Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Insights & Resources</h1>
+    <p>Explore expert insights on Payroll, HR, Hiring and Workforce Management powered by MineHR.</p>
+    <button id="exploreBtn">Explore Blogs</button>
+  </div>
+
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800" alt="">
+  </div>
+</section>
+
+<!-- ================= FEATURED BLOG ================= -->
+
+<section class="featured">
+  <div class="featured-image">
+    <img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1000" alt="">
+  </div>
+
+  <div class="featured-content">
+    <div class="meta">Featured | 12 Mins</div>
+    <h2>HR Salary in India 2026: Complete Guide</h2>
+    <p>Discover how HR professionals are compensated across industries and what trends are shaping the future of workforce salaries.</p>
+    <button onclick="openBlogPage(1)">Read More</button>
+  </div>
+</section>
+
+<!-- ================= BLOG GRID ================= -->
+<section class="blog-wrapper" id="blogWrapper">
+
+<!-- 1 -->
+<div class="blog-card" onclick="openBlogPage(1)">
+<img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">All | 12 Mins</div>
+<h3>HR Salary in India 2026</h3>
+<p>Discover how HR professionals are compensated across industries in India.</p>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="blog-card" onclick="openBlogPage(2)">
+<img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Payroll | 10 Mins</div>
+<h3>India’s Labour Codes 2025</h3>
+<p>Major compliance updates every employer must prepare for.</p>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="blog-card" onclick="openBlogPage(3)">
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Hiring | 8 Mins</div>
+<h3>Modern Hiring Strategies</h3>
+<p>Data-driven recruitment trends shaping the future workforce.</p>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="blog-card" onclick="openBlogPage(4)">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 9 Mins</div>
+<h3>AI in HR Tools</h3>
+<p>How artificial intelligence enhances employee engagement tracking.</p>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="blog-card" onclick="openBlogPage(5)">
+<img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Performance | 7 Mins</div>
+<h3>OKRs & Employee Growth</h3>
+<p>Align company goals with measurable employee performance.</p>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="blog-card" onclick="openBlogPage(6)">
+<img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Time & Attendance | 6 Mins</div>
+<h3>GPS Attendance Systems</h3>
+<p>Real-time workforce tracking made simple and transparent.</p>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="blog-card" onclick="openBlogPage(7)">
+<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 11 Mins</div>
+<h3>The Evolution of HRM</h3>
+<p>From manual payroll to AI-powered HR ecosystems.</p>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="blog-card" onclick="openBlogPage(8)">
+<img src="https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Payroll | 5 Mins</div>
+<h3>Payroll Compliance Checklist</h3>
+<p>Everything employers must verify before salary processing.</p>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="blog-card" onclick="openBlogPage(9)">
+<img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 8 Mins</div>
+<h3>Boosting Employee Engagement</h3>
+<p>Strategies that improve retention and workplace satisfaction.</p>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="blog-card" onclick="openBlogPage(10)">
+<img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Hiring | 13 Mins</div>
+<h3>Interview Techniques for 2026</h3>
+<p>Structured interviews that reduce hiring bias.</p>
+</div>
+</div>
+
+<!-- 11 -->
+<div class="blog-card" onclick="openBlogPage(11)">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 10 Mins</div>
+<h3>Digital Transformation in HR</h3>
+<p>Modern HR systems driving efficiency and automation.</p>
+</div>
+</div>
+
+<!-- 12 -->
+<div class="blog-card" onclick="openBlogPage(12)">
+<img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">All | 6 Mins</div>
+<h3>Managing Remote Teams</h3>
+<p>Best practices for distributed workforce success.</p>
+</div>
+</div>
+
+<!-- 13 -->
+<div class="blog-card" onclick="openBlogPage(13)">
+<img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Payroll | 9 Mins</div>
+<h3>TDS & Tax Compliance Guide</h3>
+<p>Understanding salary deductions and tax regulations.</p>
+</div>
+</div>
+
+<!-- 14 -->
+<div class="blog-card" onclick="openBlogPage(14)">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Performance | 7 Mins</div>
+<h3>Corporate Learning Systems</h3>
+<p>Upskilling employees through LMS platforms.</p>
+</div>
+</div>
+
+<!-- 15 -->
+<div class="blog-card" onclick="openBlogPage(15)">
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">PSA | 8 Mins</div>
+<h3>HR Analytics Explained</h3>
+<p>Using data insights to make smarter workforce decisions.</p>
+</div>
+</div>
+
+<!-- 16 -->
+<div class="blog-card" onclick="openBlogPage(16)">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">All | 12 Mins</div>
+<h3>Workplace Culture Trends</h3>
+<p>How culture influences productivity and retention.</p>
+</div>
+</div>
+
+<!-- 17 -->
+<div class="blog-card" onclick="openBlogPage(17)">
+<img src="https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">PSA | 7 Mins</div>
+<h3>Project Resource Planning</h3>
+<p>Efficient allocation of teams using PSA tools.</p>
+</div>
+</div>
+
+<!-- 18 -->
+<div class="blog-card" onclick="openBlogPage(18)">
+<img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Payroll | 6 Mins</div>
+<h3>Salary Structure Breakdown</h3>
+<p>Components of CTC explained in simple terms.</p>
+</div>
+</div>
+
+<!-- 19 -->
+<div class="blog-card" onclick="openBlogPage(19)">
+<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Performance | 9 Mins</div>
+<h3>Leadership Development Models</h3>
+<p>Building future-ready managers and leaders.</p>
+</div>
+</div>
+
+<!-- 20 -->
+<div class="blog-card" onclick="openBlogPage(20)">
+<img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Time & Attendance | 5 Mins</div>
+<h3>Mobile Attendance Apps</h3>
+<p>Track workforce attendance using GPS & biometrics.</p>
+</div>
+</div>
+
+<!-- 21 -->
+<div class="blog-card" onclick="openBlogPage(21)">
+<img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 11 Mins</div>
+<h3>Employee Lifecycle Management</h3>
+<p>From onboarding to exit management automation.</p>
+</div>
+</div>
+
+<!-- 22 -->
+<div class="blog-card" onclick="openBlogPage(22)">
+<img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Hiring | 6 Mins</div>
+<h3>Offer Letter Best Practices</h3>
+<p>Creating competitive and compliant job offers.</p>
+</div>
+</div>
+
+<!-- 23 -->
+<div class="blog-card" onclick="openBlogPage(23)">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">PSA | 8 Mins</div>
+<h3>Timesheet Automation</h3>
+<p>Improve billing accuracy with automated time tracking.</p>
+</div>
+</div>
+
+<!-- 24 -->
+<div class="blog-card" onclick="openBlogPage(24)">
+<img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 7 Mins</div>
+<h3>People Analytics Trends</h3>
+<p>Data-driven HR decisions shaping modern workplaces.</p>
+</div>
+</div>
+
+<!-- 25 -->
+<div class="blog-card" onclick="openBlogPage(25)">
+<img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Payroll | 9 Mins</div>
+<h3>Annual Payroll Audits</h3>
+<p>Steps employers must take before and after audits.</p>
+</div>
+</div>
+
+<!-- 26 -->
+<div class="blog-card" onclick="openBlogPage(26)">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">All | 10 Mins</div>
+<h3>Future of Work 2030</h3>
+<p>Predictions shaping HR and workplace technology.</p>
+</div>
+</div>
+
+<!-- 27 -->
+<div class="blog-card" onclick="openBlogPage(27)">
+<img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Performance | 8 Mins</div>
+<h3>Continuous Feedback Systems</h3>
+<p>Replacing annual reviews with real-time feedback.</p>
+</div>
+</div>
+
+<!-- 28 -->
+<div class="blog-card" onclick="openBlogPage(28)">
+<img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Core HR | 12 Mins</div>
+<h3>Cloud-Based HR Software</h3>
+<p>Why SaaS HR tools outperform legacy systems.</p>
+</div>
+</div>
+
+<!-- 29 -->
+<div class="blog-card" onclick="openBlogPage(29)">
+<img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">Hiring | 7 Mins</div>
+<h3>Recruitment Funnel Optimization</h3>
+<p>Improve candidate conversion and hiring efficiency.</p>
+</div>
+</div>
+
+<!-- 30 -->
+<div class="blog-card" onclick="openBlogPage(30)">
+<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000" alt="">
+<div class="content">
+<div class="meta">All | 9 Mins</div>
+<h3>Building High-Performance Teams</h3>
+<p>Strategies for sustainable growth and productivity.</p>
+</div>
+</div>
+
+</section>
+
+
+</section>
+<!-- PAGINATION -->
+<div class="pagination" id="pagination"></div>
+<section class="cta-section">
+    <div class="cta-overlay"></div>
+
+    <div class="cta-content">
+        <h2>See MineHR in Action</h2>
+        <p>
+            Discover how fast-growing companies are transforming Payroll, 
+            HR and Workforce operations with MineHR.
+        </p>
+
+        <div class="cta-buttons">
+            <button class="cta-btn-secondary" id="openDemo">Request Demo</button>
+        </div>
+    </div>
+</section>
+
+<!-- REQUEST DEMO MODAL -->
+<div class="demo-modal" id="demoModal">
+
+  <div class="demo-overlay"></div>
+
+  <div class="demo-container">
+
+    <span class="close-demo" id="closeDemo">&times;</span>
+
+    <p class="small-title">REQUEST DEMO</p>
+
+    <h2>Schedule a Live Demo</h2>
+
+    <p class="demo-subtext">
+      See how MineHR can transform your HR & Payroll operations.
+    </p>
+
+    <form class="demo-form">
+
+      <div class="row">
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Work Email" required>
+      </div>
+
+      <div class="row">
+        <input type="text" placeholder="Company Name" required>
+        <input type="tel" placeholder="Contact Number" required>
+      </div>
+
+      <textarea placeholder="Tell us about your requirements"></textarea>
+
+      <div class="form-footer">
+        <div class="checkbox-row">
+          <input type="checkbox" required>
+          <label>I agree to the privacy policy</label>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          Schedule Demo →
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+<!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-content-wrapper">
+
+        <!-- Left Side: Brand -->
+        <div class="footer-brand-section">
+          <a href="index.html" class="footer-logo-link">
+            <img src="assets/logo-footer.png" alt="MineHR Logo" class="footer-logo">
+          </a>
+        </div>
+
+        <!-- Right Side: Links -->
+        <div class="footer-links-section">
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="trust.html">Trust</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">HR Solutions</a></li>
+              <li><a href="#">Payroll Management</a></li>
+              <li><a href="#">Talent Acquisition</a></li>
+              <li><a href="#">Employee Relations</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col contact-col">
+            <h3>Contact Us</h3>
+            <ul class="contact-list">
+              <li>
+                <div class="contact-link">
+                  <span class="icon">📍</span>
+                  <span>Ahmedabad, Gujarat – India</span>
+                </div>
+              </li>
+              <li>
+                <a href="mailto:info@minehrsolutions.com" class="contact-link">
+                  <span class="icon">✉️</span> info@minehrsolutions.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+917990977434" class="contact-link">
+                  <span class="icon">📞</span> +91 79909 77434
+                </a>
+              </li>
+            </ul>
+            <div class="social-icons">
+              <a href="#" class="social-btn facebook"><svg viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                  </path>
+                </svg></a>
+              <a href="#" class="social-btn twitter"><svg viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                  </path>
+                </svg></a>
+              <a href="#" class="social-btn linkedin"><svg viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z">
+                  </path>
+                </svg></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2025 MineHR Solutions Pvt. Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+<script src="js/blog.js"></script>
+<script src="components/navbar-premium.js"></script>
+</body>
+</html>

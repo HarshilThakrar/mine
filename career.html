@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Careers | MineHR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/career.css">
+  <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css" />
+
+  <link rel="stylesheet" href="components/navbar-premium.css">
+  <style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ================= PREMIUM NAVBAR ================= -->
+  <header class="site-header-premium" id="navbar">
+    <div class="navbar-container">
+      <div class="navbar-inner">
+        <!-- Logo -->
+        <div class="navbar-logo">
+          <a href="index.html" class="logo-link">
+            <img src="assets/logo.png" alt="MineHR Logo" class="logo-img" />
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="navbar-menu" id="navMenu">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="services.html" class="nav-link">Services</a>
+          <a href="trust.html" class="nav-link">Trust</a>
+          <a href="career.html" class="nav-link">Career</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+        </nav>
+
+        <!-- Right Side Actions -->
+        <div class="navbar-actions">
+          <!-- Search Icon -->
+          <button class="nav-icon-btn" id="searchToggle" aria-label="Search">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+              <circle cx="9" cy="9" r="6" stroke-width="2" />
+              <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button class="nav-icon-btn theme-toggle" id="themeToggle" aria-label="Toggle theme">
+            <!-- Sun Icon (Light Mode) -->
+            <svg class="theme-icon sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+              stroke="currentColor">
+              <circle cx="10" cy="10" r="3" stroke-width="2" />
+              <line x1="10" y1="1" x2="10" y2="3" stroke-width="2" stroke-linecap="round" />
+              <line x1="10" y1="17" x2="10" y2="19" stroke-width="2" stroke-linecap="round" />
+              <line x1="1" y1="10" x2="3" y2="10" stroke-width="2" stroke-linecap="round" />
+              <line x1="17" y1="10" x2="19" y2="10" stroke-width="2" stroke-linecap="round" />
+              <line x1="3.5" y1="3.5" x2="5" y2="5" stroke-width="2" stroke-linecap="round" />
+              <line x1="15" y1="15" x2="16.5" y2="16.5" stroke-width="2" stroke-linecap="round" />
+              <line x1="16.5" y1="3.5" x2="15" y2="5" stroke-width="2" stroke-linecap="round" />
+              <line x1="5" y1="15" x2="3.5" y2="16.5" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <!-- Moon Icon (Dark Mode) -->
+            <svg class="theme-icon moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+          </button>
+
+          <!-- Contact Us CTA -->
+          <a href="contact.html" class="nav-cta-btn">
+            <span>Contact Us</span>
+            <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </a>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="search-container">
+        <div class="search-box">
+          <svg class="search-box-icon" width="24" height="24" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+            <circle cx="9" cy="9" r="6" stroke-width="2" />
+            <path d="M14 14L18 18" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <input type="text" class="search-input" placeholder="Search services, blog posts..." id="searchInput"
+            autocomplete="off" />
+          <button class="search-close" id="searchClose" aria-label="Close search">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+              <path d="M4 4L16 16M16 4L4 16" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="search-suggestions">
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+            </svg>
+            <span>HRMS Software</span>
+          </div>
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+            </svg>
+            <span>Payroll Management</span>
+          </div>
+          <div class="search-suggestion-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14a6 6 0 110-12 6 6 0 010 12z" />
+            </svg>
+            <span>Web Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section class="hero">
+
+  <!-- TOP TEXT CONTENT -->
+  <div class="hero-text">
+    <h1>
+<span class="highlight-purple">Automate</span> your HR. 
+Accelerate your 
+<span class="highlight-blue">Growth.</span>
+    </h1>
+
+    <p>MineHR enhances employee engagement while simplifying HR operations.
+Deliver seamless experiences and drive long-term organizational success.
+    </p>
+    
+
+<a href="#recommendation" class="hero-btn">
+  Explore Opportunities →
+</a>
+  </div>
+<div class="circle-wrapper">
+
+   <!-- LEFT CIRCLE -->
+  <div class="circle">
+
+    <!-- TOP WHITE -->
+    <div class="half top-white"></div>
+
+    <!-- 🔥 BOTTOM IMAGE HALF -->
+    <div class="half bottom-image">
+      <img src="images/left1.png" alt="">
+      <div class="overlay-text">
+        <h3>4.8 ★</h3>
+        <p>Employee Rating</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="connector">↗</div>
+
+  <!-- CENTER CIRCLE -->
+  <div class="circle circle-center">
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="">
+  </div>
+
+  <!-- CONNECTOR -->
+  <div class="connector">⚙</div>
+ <!-- RIGHT CIRCLE -->
+  <div class="circle">
+
+    <!-- 🔥 TOP IMAGE HALF -->
+    <div class="half top-image">
+      <img src="images/left.png" alt="">
+    </div>
+
+    <!-- BOTTOM WHITE -->
+    <div class="half bottom-white">
+      <h3>Top Workplace</h3>
+      <p>Certified Company</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="recommendation-section" id="recommendation">
+
+  <h2 class="section-title">Recommendation</h2>
+
+  <div class="job-grid">
+
+    <!-- CARD 1 -->
+    <div class="job-card">
+      <div class="top-row">
+<button class="jd-btn" onclick="openJob('ai')">
+  Job Description →
+</button>
+      </div>
+
+      <h3>59362_ Senior Staff Gen AI Engineer</h3>
+
+      <div class="tags">
+        <span>Machine Learning</span>
+        <span>Artificial Intelligence</span>
+        <span>Data Science</span>
+        <span>SQL</span>
+        <span>Python</span>
+        <span>LLM (Large Language Model)</span>
+      </div>
+
+      <div class="info">
+        <p>📍 Hyderabad</p>
+        <p>₹ 416000 /Month</p>
+        <p>📅 12/02/2026</p>
+        <p>💼 10–20 Year Exp.</p>
+      </div>
+
+      <div class="action-buttons">
+<button class="apply-btn" onclick="openForm()">Apply Now</button>
+<button class="chat-btn" 
+onclick="chatRecruiter('59362_ Senior Staff Gen AI Engineer')">
+Chat With Recruiter
+</button>
+      </div>
+    </div>
+
+
+    <!-- CARD 2 -->
+    <div class="job-card">
+      <div class="top-row">
+<button class="jd-btn" onclick="openJob('fullstack')">
+  Job Description →
+</button>
+      </div>
+
+      <h3>Full Stack Developer (Python & JavaScript) – AI</h3>
+
+      <div class="tags">
+        <span>Artificial Intelligence</span>
+        <span>AWS</span>
+        <span>Azure</span>
+        <span>Django</span>
+        <span>JavaScript</span>
+        <span>Machine Learning</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>MERN Stack</span>
+        
+      </div>
+
+      <div class="info">
+        <p>📍 Remote Work</p>
+        <p>₹ 291000 /Month</p>
+        <p>📅 11/02/2026</p>
+        <p>💼 7–15 Year Exp.</p>
+      </div>
+
+      <div class="action-buttons">
+<button class="apply-btn" onclick="openForm()">Apply Now</button>
+<button class="chat-btn" 
+onclick="chatRecruiter('Full Stack Developer (Python & JavaScript) – AI')">
+Chat With Recruiter
+</button>
+      </div>
+    </div>
+
+
+    <!-- CARD 3 -->
+    <div class="job-card">
+      <div class="top-row">
+<button class="jd-btn" onclick="openJob('sales')">
+  Job Description →
+</button>
+      </div>
+
+      <h3>Consultant (Sales) – Education & Immigration</h3>
+
+      <div class="tags">
+        <span>communication</span>
+        <span>immigration</span>
+        <span>Sales</span>
+        <span>Customer Relationship</span>
+        <span>Student Counseling</span>
+        <span>English Speaking</span>
+      </div>
+
+      <div class="info">
+        <p>📍 Ahmedabad</p>
+        <p>₹ 30000 /Month</p>
+        <p>📅 11/02/2026</p>
+        <p>💼 2–5 Year Exp.</p>
+      </div>
+
+      <div class="action-buttons">
+<button class="apply-btn" onclick="openForm()">Apply Now</button>
+<button class="chat-btn" 
+onclick="chatRecruiter('Consultant (Sales) – Education & Immigration')">
+Chat With Recruiter
+</button>
+      </div>
+    </div>
+
+
+    <!-- Duplicate above 3 to make total 6 -->
+
+   <!-- CARD 4 (Same as Card 1) -->
+<div class="job-card">
+  <div class="top-row">
+<button class="jd-btn" onclick="openJob('ai')">
+  Job Description →
+</button>
+  </div>
+
+  <h3>59362_ Senior Staff Gen AI Engineer</h3>
+
+  <div class="tags">
+    <span>Machine Learning</span>
+    <span>Artificial Intelligence</span>
+    <span>Data Science</span>
+    <span>SQL</span>
+    <span>Python</span>
+    <span>LLM (Large Language Model)</span>
+  </div>
+
+  <div class="info">
+    <p>📍 Hyderabad</p>
+    <p>₹ 416000 /Month</p>
+    <p>📅 12/02/2026</p>
+    <p>💼 10–20 Year Exp.</p>
+  </div>
+
+  <div class="action-buttons">
+<button class="apply-btn" onclick="openForm()">Apply Now</button>
+<button class="chat-btn" 
+onclick="chatRecruiter('59362_ Senior Staff Gen AI Engineer')">
+Chat With Recruiter
+</button>
+  </div>
+</div>
+<!-- CARD 5 (Same as Card 1) -->
+<div class="job-card">
+      <div class="top-row">
+<button class="jd-btn" onclick="openJob('fullstack')">
+  Job Description →
+</button>
+      </div>
+
+      <h3>Full Stack Developer (Python & JavaScript) – AI</h3>
+
+      <div class="tags">
+        <span>Artificial Intelligence</span>
+        <span>AWS</span>
+        <span>Azure</span>
+        <span>Django</span>
+        <span>JavaScript</span>
+        <span>Machine Learning</span>
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>MERN Stack</span>
+      </div>
+
+      <div class="info">
+        <p>📍 Remote Work</p>
+        <p>₹ 291000 /Month</p>
+        <p>📅 11/02/2026</p>
+        <p>💼 7–15 Year Exp.</p>
+      </div>
+
+      <div class="action-buttons">
+<button class="apply-btn" onclick="openForm()">Apply Now</button>
+<button class="chat-btn" 
+onclick="chatRecruiter('Full Stack Developer (Python & JavaScript) – AI')">
+Chat With Recruiter
+</button>
+      </div>
+    </div>
+<!-- CARD 6 (Same as Card 1) -->
+ <div class="job-card">
+      <div class="top-row">
+<button class="jd-btn" onclick="openJob('sales')">
+  Job Description →
+</button>
+      </div>
+
+      <h3>Consultant (Sales) – Education & Immigration</h3>
+
+      <div class="tags">
+        <span>communication</span>
+        <span>immigration</span>
+        <span>Sales</span>
+        <span>Customer Relationship</span>
+        <span>Student Counseling</span>
+        <span>English Speaking</span>
+      </div>
+
+      <div class="info">
+        <p>📍 Ahmedabad</p>
+        <p>₹ 30000 /Month</p>
+        <p>📅 11/02/2026</p>
+        <p>💼 2–5 Year Exp.</p>
+      </div>
+
+      <div class="action-buttons">
+<button class="apply-btn" onclick="openForm()">Apply Now</button>
+<button class="chat-btn" 
+onclick="chatRecruiter('Consultant (Sales) – Education & Immigration')">
+Chat With Recruiter
+</button>
+      </div>
+    </div>
+
+
+    <!-- Duplicate above 3 to make total 6 -->
+</div>
+</section>
+<!-- APPLY FORM MODAL -->
+<div class="apply-modal" id="applyModal">
+
+  <div class="apply-form-box">
+    <span class="close-btn" onclick="closeForm()">×</span>
+
+    <h2>Job Application Form</h2>
+
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+
+      <input type="text" placeholder="Current Location">
+
+      <label>Upload Resume</label>
+      <input type="file" accept=".pdf,.doc,.docx" required>
+
+      <button type="submit" class="submit-btn">Submit Application</button>
+    </form>
+  </div>
+
+</div>
+<!-- SUCCESS POPUP -->
+<div class="success-modal" id="successModal">
+  <div class="success-box">
+    <h2>🎉 Application Submitted Successfully!</h2>
+    <p>Thank you for applying. Our team will contact you soon.</p>
+    <button onclick="closeSuccess()">OK</button>
+  </div>
+</div>
+
+<!-- JOB DESCRIPTION MODAL -->
+<div class="job-modal" id="jobModal">
+
+  <div class="job-modal-box">
+    <span class="close-btn" onclick="closeJob()">×</span>
+
+    <h2 id="jobTitle"></h2>
+
+    <div id="jobContent">
+      <!-- Description JS se aayega -->
+    </div>
+
+    <button class="apply-btn" onclick="openForm()">Apply Now</button>
+
+  </div>
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-content-wrapper">
+
+        <!-- Left Side: Brand -->
+        <div class="footer-brand-section">
+          <a href="index.html" class="footer-logo-link">
+            <img src="assets/logo-footer.png" alt="MineHR Logo" class="footer-logo">
+          </a>
+        </div>
+
+        <!-- Right Side: Links -->
+        <div class="footer-links-section">
+          <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="trust.html">Trust</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">HR Solutions</a></li>
+              <li><a href="#">Payroll Management</a></li>
+              <li><a href="#">Talent Acquisition</a></li>
+              <li><a href="#">Employee Relations</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col contact-col">
+            <h3>Contact Us</h3>
+            <ul class="contact-list">
+              <li>
+                <div class="contact-link">
+                  <span class="icon">📍</span>
+                  <span>Ahmedabad, Gujarat – India</span>
+                </div>
+              </li>
+              <li>
+                <a href="mailto:info@minehrsolutions.com" class="contact-link">
+                  <span class="icon">✉️</span> info@minehrsolutions.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+917990977434" class="contact-link">
+                  <span class="icon">📞</span> +91 79909 77434
+                </a>
+              </li>
+            </ul>
+            <div class="social-icons">
+              <a href="#" class="social-btn facebook"><svg viewBox="0 0 24 24">
+                  <path fill="currentColor" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                  </path>
+                </svg></a>
+              <a href="#" class="social-btn twitter"><svg viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                  </path>
+                </svg></a>
+              <a href="#" class="social-btn linkedin"><svg viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z">
+                  </path>
+                </svg></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2025 MineHR Solutions Pvt. Ltd. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+<script src="js/career.js"></script>
+<script src="components/navbar-premium.js"></script>
+
+</body>
+</html>

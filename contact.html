@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | MineHR</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+  <script src="js/contact.js" defer></script>
+</head>
+<body>
+  <button class="global-back-btn" onclick="history.back()">
+  ← Back
+</button>
+
+
+<div class="contact-split">
+
+  <!-- LEFT CARD -->
+  <div class="contact-left-card" style="min-height: 580px;">
+    <div class="left-slider">
+
+      <!-- SLIDE 1 -->
+      <div class="left-slide active">
+        
+        <h4 class="small-title">GET IN TOUCH</h4>
+
+        <h1 class="main-title">Let’s Talk About Your HR Needs</h1>
+
+        <p class="intro">
+          Tell us about your company and challenges — our HR experts
+          will guide you with the right solution.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature-item">✔ Indian compliance expertise — Payroll, labour laws & statutory support</div>
+          <div class="feature-item">✔ Dedicated HR professionals — Hands-on support for growing teams</div>
+          <div class="feature-item">✔ Transparent pricing — No hidden costs, clear plans</div>
+        </div>
+
+        <button id="continueBtn" class="primary-btn">Continue →</button>
+
+        <p class="support-text">
+          Or email us directly at
+          <a href="mailto:contact@minehrsolutions.com">contact@minehrsolutions.com</a>
+        </p>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="left-slide">
+        <h4 class="small-title">GET IN TOUCH</h4>
+
+        <h1 class="main-title">Let’s Chat, Reach Out to Us</h1>
+
+        <p class="intro">
+          Have questions or feedback? We’re here to help.
+        </p>
+
+        <form class="contact-form">
+          <div class="row">
+            <input type="text" placeholder="Name *" required>
+            <input type="email" placeholder="Email address *" required>
+          </div>
+           <div class="row">
+            <input type="text" placeholder="Company Name *" required>
+            <input type="number" placeholder="Contact Number *" pattern="[0-9]{10}" title="Please enter a valid 10-digit phone number" maxlength="10" required>
+          </div>
+          <textarea placeholder="Your message" rows="5"></textarea>        
+
+ <div class="form-footer">
+  <div class="checkbox-row">
+    <input type="checkbox" id="privacy" required>
+    <label for="privacy">I agree to the <a href="#" id="privacyPolicyLink">privacy policy</a></label>
+  </div>
+
+  <button type="submit" class="submit-btn">
+    Send Message →
+  </button>
+</div>
+
+        
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RIGHT IMAGE (NO CHANGE) -->
+  <div class="image-wrapper"  style="min-height: 580px;">
+    <img src="images/hr-team.png" alt="MineHR Team">
+
+    <div class="image-blur"></div>
+
+    <div class="image-text">
+      <span>📍 Location: Ahmedabad, Gujarat – India</span>
+      <span>📧 Email: Contact@minehrsolutions.com</span>
+      <span>📞 Phone: +91 9XXXXXXXXX</span>
+    </div>
+    <!-- MAP SECTION -->
+<div class="contact-map">
+  <iframe 
+    src="https://www.google.com/maps?q=Ahmedabad,Gujarat,India&output=embed"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+</div>
+
+  </div>
+  
+
+</div>
+
+<script src="script.js"></script>
+<script>
+// Privacy checkbox validation
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('.contact-form');
+  const submitBtn = document.querySelector('.submit-btn');
+  const privacy = document.getElementById('privacy');
+  if (form && submitBtn && privacy) {
+    form.addEventListener('submit', function(e) {
+      if (!privacy.checked) {
+        e.preventDefault();
+        alert('Please agree to the privacy policy before submitting.');
+      }
+    });
+  }
+
+  // Privacy policy popup
+  const privacyLink = document.getElementById('privacyPolicyLink');
+  if (privacyLink) {
+    privacyLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      // Create modal
+      const modal = document.createElement('div');
+      modal.className = 'modal';
+      modal.id = 'policyModal';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <span class="close" id="closePrivacyPopup">×</span>
+          <h2>Privacy Policy</h2>
+          <div class="policy-text">
+            <h3>1. Introduction</h3>
+            <p>MineHR Solutions values your privacy and is committed to protecting the information you share while using our HRMS platform. By accessing or using our services, you agree to the terms outlined in this policy.</p>
+            <h3>2. Acceptance of Terms</h3>
+            <p>By using MineHR Solutions, you acknowledge that you have read, understood, and agreed to these Terms & Privacy Policy conditions.</p>
+            <h3>3. Information We Collect</h3>
+            <p>We may collect the following information to provide our services smoothly:</p>
+            <ul>
+              <li>Company and employee information</li>
+              <li>Contact details</li>
+              <li>Login credentials</li>
+              <li>Payroll and HR-related data</li>
+            </ul>
+            <h3>4. Personal Information</h3>
+            <p>This includes names, email addresses, phone numbers, job roles, and other details necessary for HR management.</p>
+            <h3>5. Technical Information</h3>
+            <p>We may collect IP addresses, browser type, device details, and usage data to improve system performance.</p>
+            <h3>6. How We Use Your Information</h3>
+            <ul>
+              <li>Provide HRMS services</li>
+              <li>Manage payroll and employee records</li>
+              <li>Offer customer support and system updates</li>
+            </ul>
+            <h3>7. Service Improvement</h3>
+            <p>We may use aggregated, non-personal data to improve our platform features and performance.</p>
+            <h3>8. Data Protection & Security</h3>
+            <p>We use reasonable security measures such as encryption, access control, firewalls, and secure servers to protect your data from unauthorized access.</p>
+            <h3>9. User Account Responsibility</h3>
+            <p>Users are responsible for maintaining the confidentiality of their login credentials and account access.</p>
+            <h3>10. Data Sharing</h3>
+            <p>MineHR Solutions does not sell or trade your data. Information is shared only when legally required or necessary to deliver our services.</p>
+            <h3>11. Third-Party Services</h3>
+            <p>We may use trusted third-party service providers (such as hosting or payment providers) who follow strict confidentiality obligations.</p>
+            <h3>12. Legal Compliance</h3>
+            <p>We may disclose information if required by law, regulation, or legal process.</p>
+            <h3>13. Cookies & Tracking</h3>
+            <p>Cookies are used to improve user experience and system performance. You can manage cookie settings through your browser.</p>
+            <h3>14. Data Retention</h3>
+            <p>Data is retained only for as long as required to provide services or meet legal obligations.</p>
+            <h3>15. User Rights</h3>
+            <ul>
+              <li>Access your data</li>
+              <li>Request correction or deletion</li>
+              <li>Withdraw consent</li>
+            </ul>
+            <h3>16. Data Accuracy</h3>
+            <p>Users are responsible for ensuring that the information provided is accurate and up to date.</p>
+            <h3>17. Service Availability</h3>
+            <p>While we strive to provide uninterrupted services, MineHR Solutions does not guarantee continuous or error-free operation.</p>
+            <h3>18. Limitation of Liability</h3>
+            <p>MineHR Solutions shall not be liable for indirect, incidental, or consequential damages arising from the use of our platform.</p>
+            <h3>19. Policy Updates</h3>
+            <p>This policy may be updated periodically. Any changes will be reflected on this page with the updated revision date.</p>
+            <h3>20. Contact</h3>
+            <p>For privacy-related concerns or questions, please contact us:</p>
+            <p><strong>Email:</strong> privacy@minehrsolutions.com</p>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+      // Close modal
+      document.getElementById('closePrivacyPopup').onclick = function() {
+        document.body.removeChild(modal);
+        document.body.style.overflow = 'auto';
+      };
+      // Close on outside click
+      modal.onclick = function(e) {
+        if (e.target === modal) {
+          document.body.removeChild(modal);
+          document.body.style.overflow = 'auto';
+        }
+      };
+      // Close on ESC
+      window.addEventListener('keydown', function escListener(e) {
+        if (e.key === 'Escape') {
+          if (document.body.contains(modal)) {
+            document.body.removeChild(modal);
+            document.body.style.overflow = 'auto';
+          }
+          window.removeEventListener('keydown', escListener);
+        }
+      });
+    });
+  }
+});
+// Basic popup styles
+const style = document.createElement('style');
+style.innerHTML = `
+/* Gradient text for privacy policy link */
+#privacyPolicyLink {
+  background: none;
+  color: transparent;
+  background-image: linear-gradient(90deg, #6c63ff, #00c9ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+#privacyPolicyLink:hover {
+  background-image: linear-gradient(90deg, #00c9ff, #6c63ff);
+}
+/* MODAL STYLES */
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+.modal-content {
+  background: #fff;
+  width: 80%;
+  max-width: 900px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  position: relative;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 24px;
+  cursor: pointer;
+}
+.policy-text h3 {
+  color: #5c4dff;
+  margin-top: 25px;
+}
+.policy-text p,
+.policy-text li {
+  line-height: 1.6;
+  color: #444;
+}
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+@media (max-width: 600px) {
+  .modal-content {
+    width: 92%;
+    padding: 25px;
+  }
+}
+`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
