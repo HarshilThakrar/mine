@@ -405,7 +405,7 @@ font-size:26px;
     color: white;
     overflow: hidden;
 
-    background: url("../images/footer-bg.png") center/cover no-repeat;
+    background: url("public/images/footer-bg.png") center/cover no-repeat;
 }
 
 /* Light overlay for readability */
