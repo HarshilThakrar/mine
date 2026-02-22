@@ -35,6 +35,40 @@ db.connect((err) => {
   }
 });
 
+
+// Job application form API
+const multer = require('multer');
+const upload = multer({
+  storage: multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, 'uploads'));
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+      cb(null, uniqueSuffix + '-' + file.originalname);
+    }
+  })
+});
+
+app.post('/api/apply', upload.single('resume'), (req, res) => {
+  const { fullName, email, phone, location } = req.body;
+  const resumeFile = req.file ? req.file.filename : null;
+
+  if (!fullName || !email || !phone || !resumeFile) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  db.query(
+    'INSERT INTO career (full_name, email, phone, location, resume, created_at) VALUES (?, ?, ?, ?, ?, NOW())',
+    [fullName, email, phone, location, resumeFile],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: 'Database error' });
+      }
+      res.json({ success: true });
+    }
+  );
+});
 // Contact form API
 app.post('/api/contact', async (req, res) => {
   const { name, email, contact_number, company, message } = req.body;
@@ -50,19 +84,19 @@ app.post('/api/contact', async (req, res) => {
       if (err) {
         return res.status(500).json({ error: 'Database error' });
       }
-      // Send email to thakrarharshil0@gmail.com
+      // Send email to hr@minehrsolutions.com
       const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 465,
+        host: 'smtp.hostinger.com',
+        port: 587,
         secure: true,
         auth: {
-          user: 'thakrarharshil0@gmail.com', // Use your email
-          pass: 'jyuwteepmkwfzlau' // Use your email password or app password
+          user: 'hr@minehrsolutions.com', // Use your email
+          pass: "Minehrsolutions@1#" // Use your email password or app password
         }
       });
       const mailOptions = {
-        from: 'thakrarharshil0@gmail.com',
-        to: 'thakrarharshil0@gmail.com',
+        from: 'hr@minehrsolutions.com',
+        to: 'hr@minehrsolutions.com',
         subject: 'New Contact Us Submission',
         text: `Name: ${name}\nEmail: ${email}\nContact Number: ${contact_number}\nCompany: ${company}\nMessage: ${message}`
       };

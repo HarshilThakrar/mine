@@ -10,6 +10,14 @@
         max-width: 100%;
     }
 
+    .services-container {
+        padding: 0 20px !important;
+    }
+
+    .services-scroll-section {
+        padding: 40px 20px !important;
+    }
+
     .hero-title {
         font-size: 48px;
     }
@@ -65,27 +73,6 @@
 
     .navbar-actions {
         gap: 8px;
-    }
-
-    /* Force show CTA as icon-only on mobile since it's hidden by default premium styles */
-    .navbar-actions .nav-cta-btn {
-        display: flex !important;
-        padding: 8px;
-        width: 36px;
-        height: 36px;
-        justify-content: center;
-        border-radius: 50%;
-        /* Circle shape for icon only */
-    }
-
-    .nav-cta-btn span {
-        display: none;
-        /* Hide text */
-    }
-
-    .nav-cta-btn svg {
-        margin: 0;
-        /* Center svg */
     }
 
     /* Hero Section */

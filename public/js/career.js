@@ -113,19 +113,32 @@ document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector(".apply-form-box form");
 
   if(form){
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", async function(e) {
       e.preventDefault();
 
-      // Close apply modal
-      const applyModal = document.getElementById("applyModal");
-      if (applyModal) applyModal.style.display = "none";
+      const formData = new FormData(form);
 
-      // Show success modal
-      const successModal = document.getElementById("successModal");
-      if (successModal) successModal.style.display = "flex";
+      try {
+        const response = await fetch("/api/apply", {
+          method: "POST",
+          body: formData
+        });
+        if(response.ok){
+          // Close apply modal
+          const applyModal = document.getElementById("applyModal");
+          if (applyModal) applyModal.style.display = "none";
 
-      // Reset form
-      form.reset();
+          // Show success modal
+          const successModal = document.getElementById("successModal");
+          if (successModal) successModal.style.display = "flex";
+
+          form.reset();
+        } else {
+          alert("Application failed. Please try again.");
+        }
+      } catch (err) {
+        alert("Error submitting application.");
+      }
     });
   }
 
