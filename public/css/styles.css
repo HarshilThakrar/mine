@@ -205,7 +205,7 @@ body {
 }
 
 .why-container {
-  max-width: 1470px;
+  max-width: 1600px;
   margin: 0;
   padding: 0 24px;
 }
@@ -215,15 +215,16 @@ body {
   font-weight: 800;
   text-align: center;
   margin-bottom: 30px;
-  /* Gradient Text Effect */
   background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 50%, #ec4899 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  left: unset;
+  transform: none;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Animated Underline */
@@ -232,7 +233,6 @@ body {
   display: block;
   width: 60px;
   height: 4px;
-  /* Match Text Gradient */
   background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 50%, #ec4899 100%);
   margin: 10px auto 0;
   border-radius: 2px;
@@ -252,7 +252,6 @@ body {
   line-height: 1.8;
   color: #475569;
   font-weight: 400;
-  /* Styled Container */
   background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(248, 250, 252, 0.8), rgba(255, 255, 255, 0));
   padding: 20px 40px;
   border-radius: 12px;
@@ -273,7 +272,6 @@ body {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  /* Subtle shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -287,7 +285,6 @@ body {
 .card-header {
   height: 110px;
   background: linear-gradient(135deg, #1e548a, #7a23bc);
-  /* Darker Blue to Darker Purple gradient */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -310,19 +307,15 @@ body {
   font-size: 18px;
   font-weight: 700;
   color: #0f172a;
-  /* Dark text */
   margin-bottom: 8px;
 }
 
 .why-card p {
   font-size: 14px;
   color: #64748b;
-  /* Grey subtitle */
   line-height: 1.5;
   margin: 0;
 }
-
-/* Removed old gradient-border styles */
 
 /* =========================================================
    SERVICES (TEXT + IMAGE)
@@ -396,38 +389,28 @@ body {
 .services-scroll-section {
   background: #ffffff;
   padding: 40px 100px;
-  /* 100px fixed space on both sides */
   overflow: hidden;
-  /* Hide overflow to allow infinite scroll effect cleanly */
 }
 
 .services-scroll-container {
   display: flex;
   gap: 42px;
   overflow-x: auto;
-  /* Allow manual scroll */
   padding: 20px 0;
-  /* No extra left/right padding, section handles it */
   scrollbar-width: none;
-  /* Hide scrollbar Firefox */
   -ms-overflow-style: none;
-  /* Hide scrollbar IE/Edge */
-  /* For smooth manual scrolling */
   scroll-behavior: smooth;
 }
 
 .services-scroll-container::-webkit-scrollbar {
   display: none;
-  /* Hide scrollbar Chrome/Safari */
 }
 
-/* Specific card style for the scroll section, inheriting from .why-card but fixed width */
 .service-card-scroll {
   min-width: 280px;
   width: 280px;
   flex-shrink: 0;
   min-height: 300px;
-  /* Fixed minimum height for consistency */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
@@ -445,7 +428,6 @@ body {
 .service-card-scroll .card-header {
   height: 140px;
   flex-shrink: 0;
-  /* Prevent header from shrinking */
   background: linear-gradient(135deg, #1e3a8a, #581c87);
   display: flex;
   align-items: center;
@@ -456,9 +438,7 @@ body {
   width: 70px;
   height: 70px;
   background: rgba(255, 255, 255, 0.25);
-  /* Light white */
   border-radius: 12px;
-  /* Rounded square */
   padding: 10px;
   display: flex;
   align-items: center;
@@ -475,7 +455,6 @@ body {
   justify-content: space-between;
   align-items: center;
   min-height: 230px;
-  /* Ensure consistent body height */
 }
 
 .service-card-scroll h3 {
@@ -491,7 +470,6 @@ body {
   line-height: 1.5;
   margin-bottom: 24px;
   flex-grow: 1;
-  /* Allow text to fill available space */
 }
 
 .card-btn {
@@ -505,7 +483,6 @@ body {
   font-size: 14px;
   transition: all 0.25s ease;
   margin-top: auto;
-  /* Push to bottom */
 }
 
 .card-btn:hover {
@@ -570,12 +547,10 @@ body {
    FOOTER (REDESIGNED - IMAGE MATCH)
    ========================================================= */
 .site-footer {
-  /* Background Image from Assets */
   background: url("../assets/footer.jpg");
   background-size: cover;
   background-position: center;
   padding: 40px 0 20px;
-  /* Reduced top padding */
   position: relative;
   font-family: 'Inter', sans-serif;
   color: white;
@@ -594,10 +569,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  /* Top align */
   flex-wrap: wrap;
   gap: 40px;
-  /* Reduced gap */
 }
 
 /* --- Left Side: Brand --- */
@@ -609,19 +582,15 @@ body {
 }
 
 .footer-logo {
-  height: 60px;
-  /* Slight reduction */
+  height: 90px;
   width: auto;
-  margin-top: 40px;
-  /* Reduced margin */
+  margin-top: 10px;
   margin-bottom: 10px;
-  /* Reduced margin */
-  /* Removed white box styles for transparent look */
+  margin-left: 40px;
   background: transparent;
   padding: 0;
   box-shadow: none;
   transition: transform 0.3s ease;
-  /* Ensure the image fits nicely */
   object-fit: contain;
 }
 
@@ -635,7 +604,6 @@ body {
 
 .company-name {
   font-size: 32px;
-  /* Slight reduction */
   font-weight: 800;
   color: white;
   margin: 0;
@@ -645,9 +613,7 @@ body {
 
 .company-tagline {
   font-size: 18px;
-  /* Slight reduction */
   font-weight: 600;
-  /* Vivid Pink Gradient for "Stands For HR" */
   background: linear-gradient(90deg, #d946ef, #ec4899);
   -webkit-background-clip: text;
   background-clip: text;
@@ -661,7 +627,6 @@ body {
 .footer-links-section {
   display: flex;
   gap: 60px;
-  /* Reduced gap */
   flex: 1;
   justify-content: flex-end;
   flex-wrap: wrap;
@@ -673,11 +638,9 @@ body {
 
 .footer-col h3 {
   font-size: 16px;
-  /* Slight reduction */
   font-weight: 700;
   color: white;
   margin-bottom: 15px;
-  /* Reduced margin */
   position: relative;
 }
 
@@ -689,13 +652,11 @@ body {
 
 .footer-col ul li {
   margin-bottom: 10px;
-  /* Reduced margin */
 }
 
 .footer-col ul li a {
   text-decoration: none;
   color: #e2e8f0;
-  /* Light gray */
   font-size: 14px;
   transition: all 0.3s ease;
   font-weight: 400;
@@ -704,7 +665,6 @@ body {
 
 .footer-col ul li a:hover {
   color: #d946ef;
-  /* Pink hover */
   transform: translateX(5px);
 }
 
@@ -724,12 +684,10 @@ body {
   display: flex;
   gap: 12px;
   margin-top: 15px;
-  /* Reduced margin */
 }
 
 .social-btn {
   width: 32px;
-  /* Slight reduction */
   height: 32px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
@@ -755,7 +713,6 @@ body {
 /* --- Footer Bottom --- */
 .footer-bottom-bar {
   margin-top: 30px;
-  /* Reduced margin */
   padding-top: 20px;
   text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -817,7 +774,6 @@ body {
 .stats-title {
   text-align: center;
   font-size: 48px;
-  /* Larger title */
   font-weight: 700;
   color: #1e1b4b;
   margin-bottom: 60px;
@@ -831,15 +787,11 @@ body {
 
 .stat-card {
   background: #f8fafc;
-  /* Light premium background */
   border-radius: 24px;
-  /* Rounded corners */
   padding: 50px 30px;
   text-align: center;
-  /* Soft, premium shadow */
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  /* Bouncy transition */
   position: relative;
   overflow: hidden;
   border: 1px solid #f1f5f9;
@@ -849,7 +801,6 @@ body {
 .stat-card:hover {
   transform: translateY(-15px) scale(1.02);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  /* Deep shadow */
   background: #ffffff;
   border-color: #e2e8f0;
 }
@@ -875,7 +826,6 @@ body {
 .stat-number {
   font-size: 56px;
   font-weight: 800;
-  /* Dark navy color */
   color: #0f172a;
   margin-bottom: 10px;
   line-height: 1;
@@ -885,7 +835,6 @@ body {
   font-size: 16px;
   font-weight: 600;
   color: #64748b;
-  /* Muted slate */
   text-transform: uppercase;
   letter-spacing: 1px;
 }
