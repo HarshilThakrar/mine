@@ -19,19 +19,21 @@ app.get('/career.html', (req, res) => res.sendFile(path.join(__dirname, 'career.
 app.get('/services.html', (req, res) => res.sendFile(path.join(__dirname, 'services.html')));
 app.get('/trust.html', (req, res) => res.sendFile(path.join(__dirname, 'trust.html')));
 
-// MySQL connection
+// MySQL connection - Using environment variables for production
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root', // Change if needed
-  password: '', // Change if needed
-  database: 'minehr'
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'minehr',
+  port: process.env.DB_PORT || 3306,
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : null
 });
 
 db.connect((err) => {
   if (err) {
     console.error('MySQL connection error:', err);
   } else {
-    console.log('Connected to MySQL database minehr');
+    console.log('Connected to MySQL database');
   }
 });
 
@@ -84,14 +86,14 @@ app.post('/api/contact', async (req, res) => {
       if (err) {
         return res.status(500).json({ error: 'Database error' });
       }
-      // Send email to hr@minehrsolutions.com
+      // Send email
       const transporter = nodemailer.createTransport({
-        host: 'smtp.hostinger.com',
-        port: 587,
-        secure: true,
+        host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+        port: process.env.SMTP_PORT || 587,
+        secure: process.env.SMTP_SECURE === 'true',
         auth: {
-          user: 'hr@minehrsolutions.com', // Use your email
-          pass: "Minehrsolutions@1#" // Use your email password or app password
+          user: process.env.SMTP_USER || 'hr@minehrsolutions.com',
+          pass: process.env.SMTP_PASS || "Minehrsolutions@1#"
         }
       });
       const mailOptions = {
@@ -111,6 +113,10 @@ app.post('/api/contact', async (req, res) => {
   );
 });
 
-app.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
+  });
+}
+
+module.exports = app;
