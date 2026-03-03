@@ -626,6 +626,7 @@ body {
 /* --- Right Side: Links --- */
 .footer-links-section {
   display: flex;
+  gap: 60px;
   flex: 1;
   justify-content: flex-end;
   flex-wrap: wrap;
