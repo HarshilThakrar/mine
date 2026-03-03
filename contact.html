@@ -178,15 +178,15 @@
 
           <form class="contact-form">
             <div class="row">
-              <input type="text" placeholder="Name *" required>
-              <input type="email" placeholder="Email address *" required>
+              <input type="text" name="name" placeholder="Name *" required>
+              <input type="email" name="email" placeholder="Email address *" required>
             </div>
             <div class="row">
-              <input type="text" placeholder="Company Name *" required>
-              <input type="number" placeholder="Contact Number *" pattern="[0-9]{10}"
+              <input type="text" name="company" placeholder="Company Name *" required>
+              <input type="number" name="contact_number" placeholder="Contact Number *" pattern="[0-9]{10}"
                 title="Please enter a valid 10-digit phone number" maxlength="10" required>
             </div>
-            <textarea placeholder="Your message" rows="5"></textarea>
+            <textarea name="message" placeholder="Your message" rows="5"></textarea>
 
             <div class="form-footer">
               <div class="checkbox-row">

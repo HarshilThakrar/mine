@@ -1,7 +1,7 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('.contact-form');
   if (form) {
-    form.addEventListener('submit', async function(e) {
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       // Show submitting loader
       let loader = document.createElement('div');
@@ -12,16 +12,16 @@ document.addEventListener('DOMContentLoaded', function() {
       const inputs = form.querySelectorAll('input, textarea');
       const data = {};
       inputs.forEach(input => {
-        if (input.type !== 'checkbox') {
-          data[input.placeholder.toLowerCase().replace(/\s/g, '_')] = input.value;
+        if (input.name) {
+          data[input.name] = input.value;
         }
       });
       const payload = {
         name: data['name'] || '',
-        email: data['email_address'] || '',
+        email: data['email'] || '',
         contact_number: data['contact_number'] || '',
-        company: data['company_name'] || '',
-        message: form.querySelector('textarea').value || ''
+        company: data['company'] || '',
+        message: data['message'] || ''
       };
       try {
         const res = await fetch('/api/contact', {
