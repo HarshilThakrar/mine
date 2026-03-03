@@ -1,33 +1,7 @@
 {
     "version": 2,
     "cleanUrls": true,
-    "builds": [
-        {
-            "src": "index.js",
-            "use": "@vercel/node"
-        }
-    ],
     "rewrites": [
-        {
-            "source": "/css/(.*)",
-            "destination": "/public/css/$1"
-        },
-        {
-            "source": "/js/(.*)",
-            "destination": "/public/js/$1"
-        },
-        {
-            "source": "/assets/(.*)",
-            "destination": "/public/assets/$1"
-        },
-        {
-            "source": "/components/(.*)",
-            "destination": "/public/components/$1"
-        },
-        {
-            "source": "/favicon.png",
-            "destination": "/public/favicon.png"
-        },
         {
             "source": "/api/(.*)",
             "destination": "/index.js"
