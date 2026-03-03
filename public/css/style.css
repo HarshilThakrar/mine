@@ -283,6 +283,10 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .contact-left-card {
+    height: auto;
+    padding: 0;
+  }
   .contact-split {
     grid-template-columns: 1fr;
     height: auto;
@@ -723,6 +727,9 @@ body {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+  .left-slide {
+    padding: 22px;
+  }
   .contact-split {
     grid-template-columns: 1fr;
     height: auto;
