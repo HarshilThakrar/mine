@@ -11,8 +11,22 @@ app.use(bodyParser.json());
 // Serve assets (css, js, images) from public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Fallback for root HTML serving (mostly for local development)
+// Root HTML routes
+const rootPages = ['contact', 'services', 'trust', 'career', 'blog', 'blog-detail'];
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/index.html', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+
+rootPages.forEach(page => {
+  app.get(`/${page}`, (req, res) => res.sendFile(path.join(__dirname, `${page}.html`)));
+  app.get(`/${page}.html`, (req, res) => res.sendFile(path.join(__dirname, `${page}.html`)));
+});
+
+// Services subdirectory routes
+app.get('/services/:page', (req, res) => {
+  let page = req.params.page;
+  if (!page.endsWith('.html')) page += '.html';
+  res.sendFile(path.join(__dirname, 'services', page));
+});
 
 // API Routes
 // Job application form API
