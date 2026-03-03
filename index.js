@@ -11,25 +11,11 @@ app.use(bodyParser.json());
 // Serve assets (css, js, images) from public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Dynamic route for services subdirectory
-app.get('/services/:page', (req, res) => {
-  const page = req.params.page.endsWith('.html') ? req.params.page : req.params.page + '.html';
-  res.sendFile(path.join(__dirname, 'services', page));
-});
-
-// Dynamic route for root HTML files
-app.get('/:page', (req, res) => {
-  if (req.params.page.includes('.') && !req.params.page.endsWith('.html')) {
-    return res.status(404).end(); // Skip non-html files if they leaked through
-  }
-  const page = req.params.page.endsWith('.html') ? req.params.page : req.params.page + '.html';
-  res.sendFile(path.join(__dirname, page));
-});
-
-// Default route
+// Fallback for root HTML serving (mostly for local development)
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
-// MySQL connection - Using environment variables for production
+// API Routes
+// Job application form API
 const db = mysql.createConnection({
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
