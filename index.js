@@ -4,7 +4,6 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const url = require('url');
 
 const app = express();
 app.use(cors());
@@ -29,30 +28,28 @@ app.get('/services/:page', (req, res) => {
   res.sendFile(path.join(__dirname, 'services', page));
 });
 
-// Database Connection Pool
-let db;
+// --- DATABASE CONNECTION ---
 let poolOptions;
 
 if (process.env.DATABASE_URL) {
   try {
     const dbUri = process.env.DATABASE_URL.trim();
-    const parsed = url.parse(dbUri);
-    const [user, password] = (parsed.auth || '').split(':');
-
+    // parse manually to ensure no string misinterpretation
+    const DB_URL = new URL(dbUri);
     poolOptions = {
-      host: parsed.hostname,
-      port: parsed.port || 3306,
-      user: user,
-      password: password,
-      database: (parsed.pathname || '').substring(1).split('?')[0],
-      ssl: { rejectUnauthorized: false }, // Force SSL for Aiven/Cloud
+      host: DB_URL.hostname,
+      port: DB_URL.port || 3306,
+      user: decodeURIComponent(DB_URL.username),
+      password: decodeURIComponent(DB_URL.password),
+      database: DB_URL.pathname.substring(1).split('?')[0],
+      ssl: { rejectUnauthorized: false }, // Required for TiDB/Aiven
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0
     };
-    console.log('Configuring DB pool for host:', poolOptions.host);
-  } catch (e) {
-    console.error('DATABASE_URL parse error:', e.message);
+    console.log(`[DB] Configured via DATABASE_URL. Host: ${poolOptions.host}:${poolOptions.port}`);
+  } catch (err) {
+    console.error('[DB] DATABASE_URL Error:', err.message);
   }
 }
 
@@ -68,23 +65,25 @@ if (!poolOptions) {
     connectionLimit: 10,
     queueLimit: 0
   };
-  console.log('Using individual DB env vars for host:', poolOptions.host);
+  console.log(`[DB] Configured via individual Env Vars. Host: ${poolOptions.host}:${poolOptions.port}`);
 }
 
-db = mysql.createPool(poolOptions);
+const db = mysql.createPool(poolOptions);
 
-// Test pool connection
+// Test Pool Connection
 db.getConnection((err, connection) => {
   if (err) {
-    console.error('MySQL Pool Error:', err.message);
+    console.error('[DB] Pool Connection Error:', err.message);
     if (err.code === 'ENOTFOUND') {
-      console.error('DNS Error: Hostname could not be resolved. Please check DATABASE_URL.');
+      console.error('[DB] DNS Error: Make sure your DATABASE_URL or DB_HOST is correct.');
     }
   } else {
-    console.log('Connected to MySQL Pool successfully');
+    console.log('[DB] Pool connected successfully.');
     connection.release();
   }
 });
+
+// --- API ROUTES ---
 
 // Job application form API
 const multer = require('multer');
@@ -113,7 +112,7 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
     [fullName, email, phone, location, resumeFile],
     (err, result) => {
       if (err) {
-        console.error('Database error details:', err);
+        console.error('[API/Apply] DB Error:', err.message);
         return res.status(500).json({ error: 'Database error: ' + err.message });
       }
       res.json({ success: true });
@@ -128,20 +127,18 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  // Insert into DB (company is optional, created_at auto handled)
   db.query(
     'INSERT INTO contacts (name, email, contact_number, company, message, created_at, updated_at) VALUES (?, ?, ?, ?, ?, NOW(), NOW())',
     [name, email, contact_number, company, message],
     async (err, result) => {
       if (err) {
-        console.error('Database error details:', err);
+        console.error('[API/Contact] DB Error:', err.message);
         return res.status(500).json({ error: 'Database error: ' + err.message });
       }
 
-      // Send success response to user immediately (don't wait for email)
+      // Success Response (Background Email)
       res.json({ success: true });
 
-      // Attempt to send email in the background
       try {
         const transporter = nodemailer.createTransport({
           host: process.env.SMTP_HOST || 'smtp.hostinger.com',
@@ -151,7 +148,7 @@ app.post('/api/contact', async (req, res) => {
             user: process.env.SMTP_USER || 'hr@minehrsolutions.com',
             pass: process.env.SMTP_PASS || "Minehrsolutions@1#"
           },
-          connectionTimeout: 5000 // 5 seconds timeout
+          connectionTimeout: 5000
         });
 
         const mailOptions = {
@@ -162,14 +159,11 @@ app.post('/api/contact', async (req, res) => {
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-            console.error('Background Email Error:', error);
-          } else {
-            console.log('Email sent successfully');
-          }
+          if (error) console.error('[API/Contact] Background Email Error:', error.message);
+          else console.log('[API/Contact] Email sent successfully');
         });
       } catch (mailErr) {
-        console.error('Mail Configuration Error:', mailErr);
+        console.error('[API/Contact] Mail Config Error:', mailErr.message);
       }
     }
   );
