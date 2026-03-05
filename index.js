@@ -95,8 +95,8 @@ app.post('/api/contact', async (req, res) => {
     [name, email, contact_number, company, message],
     async (err, result) => {
       if (err) {
-        console.error('Database error:', err);
-        return res.status(500).json({ error: 'Database error' });
+        console.error('Database error details:', err);
+        return res.status(500).json({ error: 'Database error: ' + err.message });
       }
 
       // Send success response to user immediately (don't wait for email)
