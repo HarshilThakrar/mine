@@ -28,16 +28,17 @@ app.get('/services/:page', (req, res) => {
   res.sendFile(path.join(__dirname, 'services', page));
 });
 
-// API Routes
-// Job application form API
-const db = mysql.createConnection({
+// Database Connection
+const connectionConfig = process.env.DATABASE_URL || {
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'minehr',
-  port: process.env.DB_PORT || 3306,
-  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : null
-});
+  port: parseInt(process.env.DB_PORT || '3306'),
+  ssl: process.env.DB_SSL === 'false' ? null : { rejectUnauthorized: false }
+};
+
+const db = mysql.createConnection(connectionConfig);
 
 db.connect((err) => {
   if (err) {
@@ -92,33 +93,45 @@ app.post('/api/contact', async (req, res) => {
   db.query(
     'INSERT INTO contacts (name, email, contact_number, company, message, created_at, updated_at) VALUES (?, ?, ?, ?, ?, NOW(), NOW())',
     [name, email, contact_number, company, message],
-    (err, result) => {
+    async (err, result) => {
       if (err) {
+        console.error('Database error:', err);
         return res.status(500).json({ error: 'Database error' });
       }
-      // Send email
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || 'smtp.hostinger.com',
-        port: process.env.SMTP_PORT || 587,
-        secure: process.env.SMTP_SECURE === 'true',
-        auth: {
-          user: process.env.SMTP_USER || 'hr@minehrsolutions.com',
-          pass: process.env.SMTP_PASS || "Minehrsolutions@1#"
-        }
-      });
-      const mailOptions = {
-        from: 'hr@minehrsolutions.com',
-        to: 'hr@minehrsolutions.com',
-        subject: 'New Contact Us Submission',
-        text: `Name: ${name}\nEmail: ${email}\nContact Number: ${contact_number}\nCompany: ${company}\nMessage: ${message}`
-      };
-      transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-          console.error('Email error details:', error); // Add this line
-          return res.status(500).json({ error: 'Email error' });
-        }
-        res.json({ success: true });
-      });
+
+      // Send success response to user immediately (don't wait for email)
+      res.json({ success: true });
+
+      // Attempt to send email in the background
+      try {
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+          port: process.env.SMTP_PORT || 587,
+          secure: process.env.SMTP_SECURE === 'true',
+          auth: {
+            user: process.env.SMTP_USER || 'hr@minehrsolutions.com',
+            pass: process.env.SMTP_PASS || "Minehrsolutions@1#"
+          },
+          connectionTimeout: 5000 // 5 seconds timeout
+        });
+
+        const mailOptions = {
+          from: 'hr@minehrsolutions.com',
+          to: 'hr@minehrsolutions.com',
+          subject: 'New Contact Us Submission',
+          text: `Name: ${name}\nEmail: ${email}\nContact Number: ${contact_number}\nCompany: ${company}\nMessage: ${message}`
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.error('Background Email Error:', error);
+          } else {
+            console.log('Email sent successfully');
+          }
+        });
+      } catch (mailErr) {
+        console.error('Mail Configuration Error:', mailErr);
+      }
     }
   );
 });
