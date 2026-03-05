@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const url = require('url');
 
 const app = express();
 app.use(cors());
@@ -29,27 +30,61 @@ app.get('/services/:page', (req, res) => {
 });
 
 // Database Connection Pool
-const poolConfig = process.env.DATABASE_URL || {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'minehr',
-  port: parseInt(process.env.DB_PORT || '3306'),
-  ssl: process.env.DB_SSL === 'false' ? null : { rejectUnauthorized: false }
-};
+let db;
+let poolOptions;
 
-const db = mysql.createPool(poolConfig);
+if (process.env.DATABASE_URL) {
+  try {
+    const dbUri = process.env.DATABASE_URL.trim();
+    const parsed = url.parse(dbUri);
+    const [user, password] = (parsed.auth || '').split(':');
+
+    poolOptions = {
+      host: parsed.hostname,
+      port: parsed.port || 3306,
+      user: user,
+      password: password,
+      database: (parsed.pathname || '').substring(1).split('?')[0],
+      ssl: { rejectUnauthorized: false }, // Force SSL for Aiven/Cloud
+      waitForConnections: true,
+      connectionLimit: 10,
+      queueLimit: 0
+    };
+    console.log('Configuring DB pool for host:', poolOptions.host);
+  } catch (e) {
+    console.error('DATABASE_URL parse error:', e.message);
+  }
+}
+
+if (!poolOptions) {
+  poolOptions = {
+    host: process.env.DB_HOST || 'localhost',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '',
+    database: process.env.DB_NAME || 'minehr',
+    port: parseInt(process.env.DB_PORT || '3306'),
+    ssl: process.env.DB_SSL === 'false' ? null : { rejectUnauthorized: false },
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+  };
+  console.log('Using individual DB env vars for host:', poolOptions.host);
+}
+
+db = mysql.createPool(poolOptions);
 
 // Test pool connection
 db.getConnection((err, connection) => {
   if (err) {
-    console.error('MySQL Pool Error:', err);
+    console.error('MySQL Pool Error:', err.message);
+    if (err.code === 'ENOTFOUND') {
+      console.error('DNS Error: Hostname could not be resolved. Please check DATABASE_URL.');
+    }
   } else {
-    console.log('Connected to MySQL Pool');
+    console.log('Connected to MySQL Pool successfully');
     connection.release();
   }
 });
-
 
 // Job application form API
 const multer = require('multer');
@@ -78,12 +113,14 @@ app.post('/api/apply', upload.single('resume'), (req, res) => {
     [fullName, email, phone, location, resumeFile],
     (err, result) => {
       if (err) {
-        return res.status(500).json({ error: 'Database error' });
+        console.error('Database error details:', err);
+        return res.status(500).json({ error: 'Database error: ' + err.message });
       }
       res.json({ success: true });
     }
   );
 });
+
 // Contact form API
 app.post('/api/contact', async (req, res) => {
   const { name, email, contact_number, company, message } = req.body;
