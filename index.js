@@ -28,8 +28,8 @@ app.get('/services/:page', (req, res) => {
   res.sendFile(path.join(__dirname, 'services', page));
 });
 
-// Database Connection
-const connectionConfig = process.env.DATABASE_URL || {
+// Database Connection Pool
+const poolConfig = process.env.DATABASE_URL || {
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
   password: process.env.DB_PASSWORD || '',
@@ -38,13 +38,15 @@ const connectionConfig = process.env.DATABASE_URL || {
   ssl: process.env.DB_SSL === 'false' ? null : { rejectUnauthorized: false }
 };
 
-const db = mysql.createConnection(connectionConfig);
+const db = mysql.createPool(poolConfig);
 
-db.connect((err) => {
+// Test pool connection
+db.getConnection((err, connection) => {
   if (err) {
-    console.error('MySQL connection error:', err);
+    console.error('MySQL Pool Error:', err);
   } else {
-    console.log('Connected to MySQL database');
+    console.log('Connected to MySQL Pool');
+    connection.release();
   }
 });
 
